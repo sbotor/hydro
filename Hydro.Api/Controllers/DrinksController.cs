@@ -1,4 +1,4 @@
-﻿using Hydro.Api.Dto;
+﻿using Hydro.Api.Dto.Drink;
 using Hydro.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +8,7 @@ namespace Hydro.Api.Controllers
     [ApiController]
     public class DrinksController : ControllerBase
     {
-        private DrinkService _drinkService;
+        private readonly DrinkService _drinkService;
 
         public DrinksController(DrinkService drinkService)
         {
@@ -47,7 +47,7 @@ namespace Hydro.Api.Controllers
         [Route("{id}")]
         public IActionResult DeleteDrink(long id)
         {
-            _drinkService.RemoveDrink(id);
+            _drinkService.RemoveDrinkById(id);
             return Ok();
         }
     }

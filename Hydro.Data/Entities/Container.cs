@@ -1,6 +1,6 @@
 ﻿namespace Hydro.Data.Entities
 {
-    public class DrinkContainer
+    public class Container
     {
         public long Id { get; set; }
 

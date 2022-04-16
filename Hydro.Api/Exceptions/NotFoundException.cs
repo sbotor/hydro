@@ -11,5 +11,9 @@ namespace Hydro.Api.Exceptions
 
         public NotFoundException(object value) : base(HttpStatusCode.NotFound, value)
         { }
+
+        public NotFoundException(string resourceName, object id)
+            : this($"{resourceName} with id \"{id}\" does not exist.")
+        { }
     }
 }

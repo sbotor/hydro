@@ -8,8 +8,8 @@ namespace Hydro.Data
         private ApplicationDbContext _context;
 
         private GenericRepository<Drink>? _drinks;
-        private GenericRepository<DrinkContainer>? _drinkContainers;
-        private GenericRepository<DrinkType>? _drinkTypes;
+        private GenericRepository<Container>? _containers;
+        private GenericRepository<Beverage>? _beverages;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -28,27 +28,27 @@ namespace Hydro.Data
             }
         }
 
-        public GenericRepository<DrinkContainer> DrinkContainers
+        public GenericRepository<Container> Containers
         {
             get
             {
-                if (_drinkContainers == null)
+                if (_containers == null)
                 {
-                    _drinkContainers = new GenericRepository<DrinkContainer>(_context);
+                    _containers = new GenericRepository<Container>(_context);
                 }
-                return _drinkContainers;
+                return _containers;
             }
         }
 
-        public GenericRepository<DrinkType> DrinkTypes
+        public GenericRepository<Beverage> Beverages
         {
             get
             {
-                if (_drinkTypes == null)
+                if (_beverages == null)
                 {
-                    _drinkTypes = new GenericRepository<DrinkType>(_context);
+                    _beverages = new GenericRepository<Beverage>(_context);
                 }
-                return _drinkTypes;
+                return _beverages;
             }
         }
 

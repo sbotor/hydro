@@ -10,8 +10,8 @@ namespace Hydro.Data
 
         public DbSet<Drink> Drinks { get; set; }
 
-        public DbSet<DrinkContainer> DrinkContainers { get; set; }
+        public DbSet<Container> Containers { get; set; }
 
-        public DbSet<DrinkType> DrinkTypes { get; set; }
+        public DbSet<Beverage> Beverages { get; set; }
     }
 }

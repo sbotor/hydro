@@ -14,14 +14,24 @@ namespace Hydro.Data.Repositories
             _context = context;
             _set = context.Set<TEntity>();
         }
-
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>>? filter = null)
+        
+        public virtual IEnumerable<TEntity> Get(
+            Expression<Func<TEntity, bool>>? filter = null,
+            IEnumerable<string>? includeProperties = null)
         {
             IQueryable<TEntity> query = _set;
 
             if (filter != null)
             {
                 query = query.Where(filter);
+            }
+
+            if (includeProperties != null)
+            {
+                foreach (var property in includeProperties)
+                {
+                    query = query.Include(property);
+                }
             }
 
             return query.ToList();

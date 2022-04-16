@@ -1,4 +1,4 @@
-﻿namespace Hydro.Api.Dto
+﻿namespace Hydro.Api.Dto.Drink
 {
     public class DrinkGetDto
     {
@@ -8,7 +8,7 @@
 
         public DateTime AddedDateTime { get; set; }
 
-        public long? TypeId { get; set; }
+        public long? BeverageId { get; set; }
 
         public long? ContainerId { get; set; }
     }

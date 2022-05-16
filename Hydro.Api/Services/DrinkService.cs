@@ -33,7 +33,18 @@ namespace Hydro.Api.Services
 
         public long AddDrink(DrinkPostDto drinkDto)
         {
+            if (drinkDto.BeverageId is long bevId && !_work.Beverages.ExistsById(bevId))
+            {
+                throw new NotFoundException("Beverage", bevId);
+            }
+
+            if (drinkDto.ContainerId is long conId && !_work.Containers.ExistsById(conId))
+            {
+                throw new NotFoundException("Container", conId);
+            }
+
             Drink drink = _mapper.Map<Drink>(drinkDto);
+
             _work.Drinks.Add(drink);
             _work.Complete();
 
@@ -44,6 +55,16 @@ namespace Hydro.Api.Services
         {
             Drink drink = _work.Drinks.GetById(id) ??
                 throw new NotFoundException("Drink", id);
+
+            if (drinkDto.BeverageId is long bevId && !_work.Beverages.ExistsById(bevId))
+            {
+                throw new NotFoundException("Beverage", bevId);
+            }
+
+            if (drinkDto.ContainerId is long conId && !_work.Containers.ExistsById(conId))
+            {
+                throw new NotFoundException("Container", conId);
+            }
 
             _mapper.Map(drinkDto, drink);
             _work.Drinks.Update(drink);

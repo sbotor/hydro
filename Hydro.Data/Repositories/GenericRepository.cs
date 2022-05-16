@@ -61,5 +61,10 @@ namespace Hydro.Data.Repositories
         {
             return _context.Entry(entity);
         }
+
+        public bool ExistsById(long id)
+        {
+            return _set.Find(id) != null;
+        }
     }
 }
